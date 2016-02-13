@@ -14,7 +14,8 @@ defmodule Herd.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger]]
+    [applications: [:logger],
+     mod: {Herd, []}]
   end
 
   # Dependencies can be Hex packages:
@@ -28,7 +29,8 @@ defmodule Herd.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:credo, "~> 0.2", only: [:dev, :test]}
+      {:credo, "~> 0.2", only: [:dev, :test]},
+      {:mix_test_watch, "~> 0.2.5", only: :dev}
     ]
   end
 end

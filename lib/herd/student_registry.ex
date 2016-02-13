@@ -14,7 +14,7 @@ defmodule Herd.StudentRegistry do
   Starts the registry.
   """
   def start_link() do
-    GenServer.start_link(__MODULE__, :ok, [])
+    GenServer.start_link(__MODULE__, :ok, [name: :registry])
   end
 
   @doc """
@@ -22,15 +22,15 @@ defmodule Herd.StudentRegistry do
 
   Returns `{:ok, pid}` if the student exists, `:error` otherwise.
   """
-  def lookup(server, name) do
-    GenServer.call(server, {:lookup, name})
+  def lookup(name) do
+    GenServer.call(:registry, {:lookup, name})
   end
 
   @doc """
   Ensures there is a student associated to the given `name` in `server`.
   """
-  def create(server, name) do
-    GenServer.call(server, {:create, name})
+  def create(name) do
+    GenServer.call(:registry, {:create, name})
   end
 
   ## Server Callbacks
