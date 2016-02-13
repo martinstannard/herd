@@ -1,11 +1,6 @@
 defmodule Herd.StudentRegistryTest do
   use ExUnit.Case, async: true
 
-  #setup do
-    #{:ok, registry} = Herd.StudentRegistry.start_link
-    #{:ok, registry: registry}
-  #end
-
   test "creates students" do
     assert Herd.StudentRegistry.lookup("martin") == :error
 
